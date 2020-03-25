@@ -5,18 +5,53 @@ const line = readline.createInterface({
     output: process.stdout
 });
 
-let stack = [];
+class Stack {
+    constructor() {
+        this.stack = [];
+        return this;
+    }
 
-line.prompt();
+    push() {
+        // push to stack
+    }
 
-line.on('line', (input) => {
-    if (input.length > 0)
-        stack.push(...input.split(' '));
-    console.log(stack)
+    pop() {
+        // pop from stack
+    }
+}
+
+class Dictionary {
+    constructor() {
+        this.dictionary = [];
+        return this;
+    }
+
+    add() {
+        // add a word and definition to the dictionary
+    }
+
+    find() {
+        // search the dictionary for a word
+    }
+}
+
+Main = () => {
+    let stack = new Stack();
+    let dictionary = new Dictionary();
+
     line.prompt();
-});
 
-// listen for control-c
-line.on('SIGINT', () => {
-    line.close();
-});
+    line.on('line', (input) => {
+        // if (input.length > 0)
+        //     stack.push(...input.split(' '));
+        console.log(input)
+        line.prompt();
+    });
+    
+    // listen for control-c
+    line.on('SIGINT', () => {
+        line.close();
+    });
+}
+
+Main();
