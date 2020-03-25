@@ -1,6 +1,6 @@
 class Dictionary {
     constructor() {
-        this.dictionary = [];
+        this._dictionary = [];
         return this;
     }
 
