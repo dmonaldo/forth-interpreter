@@ -9,7 +9,5 @@
   },
   "author": "Dante Monaldo",
   "license": "ISC",
-  "dependencies": {
-    "commander": "^5.0.0"
-  }
+  "dependencies": {}
 }
