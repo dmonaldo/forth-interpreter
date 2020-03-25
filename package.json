@@ -1,0 +1,15 @@
+{
+  "name": "forth-interpreter",
+  "version": "1.0.0",
+  "description": "Javascript implementation of an interpreter for the Forth programming language",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dante Monaldo",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^5.0.0"
+  }
+}
