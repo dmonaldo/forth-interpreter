@@ -1,39 +1,11 @@
 const readline = require('readline');
+const Stack = require('./classes/stack');
+const Dictionary = require('./classes/dictionary');
 
 const line = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
-class Stack {
-    constructor() {
-        this.stack = [];
-        return this;
-    }
-
-    push() {
-        // push to stack
-    }
-
-    pop() {
-        // pop from stack
-    }
-}
-
-class Dictionary {
-    constructor() {
-        this.dictionary = [];
-        return this;
-    }
-
-    add() {
-        // add a word and definition to the dictionary
-    }
-
-    find() {
-        // search the dictionary for a word
-    }
-}
 
 Main = () => {
     let stack = new Stack();
