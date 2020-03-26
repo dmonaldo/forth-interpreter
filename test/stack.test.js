@@ -1,9 +1,7 @@
 const Stack = require('../classes/stack');
 
 test('create new stack', () => {
-    // expect()
     let stack = new Stack();
-    console.log(stack._stack)
     expect(stack._stack).toEqual(expect.arrayContaining([]));
 });
 

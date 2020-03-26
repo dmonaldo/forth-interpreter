@@ -1,15 +1,24 @@
 class Dictionary {
     constructor() {
-        this._dictionary = [];
+        this._dictionary = [
+            // ['.', function(stack) {return stack.pop()}]
+        ];
         return this;
     }
 
-    add() {
+    add(methodName, method) {
         // add a word and definition to the dictionary
+        this._dictionary.push([methodName, method]);
     }
 
-    find() {
+    find(methodName) {
         // search the dictionary for a word
+        let method = this._dictionary.find((method) => method[0] === methodName);
+
+        if (method)
+            return method[1];
+        else
+            return null;
     }
 }
 

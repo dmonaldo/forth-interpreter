@@ -1,5 +1,5 @@
 const readline = require('readline');
-const Stack = require('./classes/stack');
+const Stack = require('./classes/stack').default;
 const Dictionary = require('./classes/dictionary');
 
 const line = readline.createInterface({
