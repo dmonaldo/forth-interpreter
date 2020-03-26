@@ -4,14 +4,20 @@ class Stack {
         return this;
     }
 
+    // push to stack
     push(word) {
-        // push to stack
         this._stack.push(word);
     }
 
+    // pop from stack
     pop() {
-        // pop from stack
         return this._stack.pop();
+    }
+
+    // print top of stack
+    print() {
+        let top = this._stack[this._stack.length - 1];
+        console.log(top);
     }
 }
 
