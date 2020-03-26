@@ -5,7 +5,6 @@ class Dictionary {
             ['.s', (s) => {'\n' + s.print()}],
             ['+', (s) => {s.push(s.pop() + s.pop())}]
         ];
-        return this;
     }
 
     // add a word and definition to the dictionary

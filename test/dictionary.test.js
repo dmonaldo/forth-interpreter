@@ -1,12 +1,16 @@
 const Dictionary = require('../classes/dictionary');
+let dictionary = new Dictionary();
+
+afterEach(() => {
+    // reset dictionary
+    dictionary._dictionary = [];
+});
 
 test('create new dictinoary', () => {
-    let dictionary = new Dictionary();
     expect(dictionary._dictionary).toEqual(expect.arrayContaining([]));
 });
 
 test('add . method to dictionary', () => {
-    let dictionary = new Dictionary();
     let methodName = '.';
     let method = function(stack) {return stack.pop()};
     dictionary.add(methodName, method);
@@ -14,7 +18,6 @@ test('add . method to dictionary', () => {
 });
 
 test('find . method in dictionary', () => {
-    let dictionary = new Dictionary();
     let methodName = '.';
     let method = function(stack) {return stack.pop()};
     dictionary.add(methodName, method);
@@ -23,7 +26,6 @@ test('find . method in dictionary', () => {
 });
 
 test('find notFound method in dictionary', () => {
-    let dictionary = new Dictionary();
     let methodFound = dictionary.find('notFound');
     expect(methodFound).toEqual(null);
 });

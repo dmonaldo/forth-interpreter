@@ -1,15 +1,14 @@
 class Stack {
     constructor() {
         this._stack = [];
-        return this;
     }
 
-    // push to stack
+    // push to top of stack
     push(word) {
         this._stack.push(word);
     }
 
-    // pop from stack
+    // pop from top of stack
     pop() {
         return this._stack.pop();
     }
