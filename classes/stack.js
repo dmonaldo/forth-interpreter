@@ -10,7 +10,10 @@ class Stack {
 
     // pop from top of stack
     pop() {
-        return this._stack.pop();
+        if (this._stack.length > 0)
+            return this._stack.pop();
+        else
+            throw "Stack is empty"
     }
 
     // print top of stack

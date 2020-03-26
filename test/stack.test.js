@@ -19,3 +19,9 @@ test('pop 38 off stack', () => {
     stack.push(38);
     expect(stack._stack).toEqual(expect.arrayContaining([38]));
 });
+
+test('popping from an empty stack', () => {
+    expect(() => {
+        stack.pop()
+    }).toThrow();
+});
