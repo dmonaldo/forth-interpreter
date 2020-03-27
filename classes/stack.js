@@ -13,7 +13,7 @@ class Stack {
         if (this._stack.length > 0)
             return this._stack.pop();
         else
-            throw "Stack is empty"
+            console.log('Stack is empty');
     }
 
     // print the stack
