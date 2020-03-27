@@ -7,7 +7,8 @@ class Dictionary {
             ['-', (s) => {
                 let a = s.pop(), b = s.pop();
                 s.push(b - a);
-            }]
+            }],
+            ['*', (s) => {s.push(s.pop() * s.pop())}],
         ];
     }
 

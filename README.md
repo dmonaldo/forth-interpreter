@@ -17,11 +17,11 @@ npm start
 - `.` - pop from the stack
 - `.s` - print the stack
 - `+` - add two numbers
+- `-` - subtract last num on stack from second to last num on stack
+- `*` - multiply two numbers
 
 ## Roadmap
 ### Operations
-- `-` - subtract last num on stack from second to last num on stack
-- `*` - multiply two numbers
 - `/` - divide second to last stack num by last stack num
 - `dup` - duplicate last num on stack
 
