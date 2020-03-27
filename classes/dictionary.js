@@ -2,7 +2,7 @@ class Dictionary {
     constructor() {
         this._dictionary = [
             ['.', (s) => {return s.pop()}],
-            ['.s', (s) => {'\n' + s.print()}],
+            ['.s', (s) => {s.print()}],
             ['+', (s) => {s.push(s.pop() + s.pop())}]
         ];
     }

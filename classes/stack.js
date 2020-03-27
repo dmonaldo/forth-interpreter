@@ -16,10 +16,9 @@ class Stack {
             throw "Stack is empty"
     }
 
-    // print top of stack
+    // print the stack
     print() {
-        let top = this._stack[this._stack.length - 1];
-        console.log(top);
+        console.log(this._stack, " <- TOP");
     }
 }
 
