@@ -9,6 +9,10 @@ class Dictionary {
                 s.push(b - a);
             }],
             ['*', (s) => {s.push(s.pop() * s.pop())}],
+            ['/', (s) => {
+                let a = s.pop(), b = s.pop();
+                s.push(Math.floor(b / a));
+            }],
         ];
     }
 

@@ -17,6 +17,11 @@ test('add definition with spaces arond special words', () => {
     expect(forth.stack.pop()).toEqual(42);
 });
 
+test('.', () => {
+    forth.processInput('1 2 .');
+    expect(forth.stack.pop()).toEqual(1);
+});
+
 test('1 + 2', () => {
     forth.processInput('1 2 +');
     expect(forth.stack.pop()).toEqual(3);
@@ -30,4 +35,9 @@ test('12 - 7', () => {
 test('9 * 4', () => {
     forth.processInput('9 4 *');
     expect(forth.stack.pop()).toEqual(36);
+});
+
+test('8 / 2', () => {
+    forth.processInput('8 2 /');
+    expect(forth.stack.pop()).toEqual(4);
 });
