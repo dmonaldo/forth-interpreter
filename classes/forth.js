@@ -2,7 +2,7 @@ const Stack = require('./stack');
 const Dictionary = require('./dictionary');
 
 class Forth {
-    constructor(debug) {
+    constructor(debug = false) {
         this.stack = new Stack();
         this.dictionary = new Dictionary();
         this.definition;
@@ -101,7 +101,6 @@ class Forth {
     }
 
     endDefinition() {
-        console.log(this.definition)
         this.dictionary.add(this.definition.name, this.compileDefinition());
         this.definition = null;
     }

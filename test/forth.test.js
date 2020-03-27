@@ -16,3 +16,8 @@ test('add definition with spaces arond special words', () => {
     forth.processInput(': incrementMore 1 + ; 41 incrementMore');
     expect(forth.stack.pop()).toEqual(42);
 });
+
+test('- subtract 7 from 12', () => {
+    forth.processInput('12 7 -');
+    expect(forth.stack.pop()).toEqual(5);
+});

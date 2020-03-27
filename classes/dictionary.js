@@ -3,7 +3,11 @@ class Dictionary {
         this._dictionary = [
             ['.', (s) => {return s.pop()}],
             ['.s', (s) => {s.print()}],
-            ['+', (s) => {s.push(s.pop() + s.pop())}]
+            ['+', (s) => {s.push(s.pop() + s.pop())}],
+            ['-', (s) => {
+                let a = s.pop(), b = s.pop();
+                s.push(b - a);
+            }]
         ];
     }
 
