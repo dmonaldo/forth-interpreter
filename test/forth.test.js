@@ -12,8 +12,8 @@ test('run increment to find the meaning of life', () => {
     expect(forth.stack.pop()).toEqual(42);
 });
 
-test('add definition with spaces arond special words', () => {
-    forth.processInput(': incrementMore 1 + ; 41 incrementMore');
+test('add definition with spaces around ;', () => {
+    forth.processInput(':incrementMore 1 + ; 41 incrementMore');
     expect(forth.stack.pop()).toEqual(42);
 });
 

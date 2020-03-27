@@ -28,8 +28,7 @@ class Forth {
                         let definitionName = input[i].substring(1);
                         this.startDefinition(definitionName);
                     } else {
-                        // gets definition name if there is a space after ':'
-                        this.startDefinition(input[++i]);
+                        console.log('Undefined word');
                     }
                 }
                 // compile and end new definition
