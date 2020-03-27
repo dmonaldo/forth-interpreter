@@ -1,5 +1,6 @@
 const Stack = require('./stack');
 const Dictionary = require('./dictionary');
+const Definition = require('./definition');
 
 class Forth {
     constructor(debug = false) {
@@ -40,10 +41,10 @@ class Forth {
                     // end definition if word ends in ';'
                     if (input[i][input[i].length-1] === ';') {
                         let word = input[i].substring(0, input[i].length-1);
-                        this.definition.steps.push(word);
+                        this.definition.addStep(word);
                         this.endDefinition();
                     } else {
-                        this.definition.steps.push(input[i]);
+                        this.definition.addStep(input[i]);
                     }
                 }
                 // perform operation
@@ -74,34 +75,15 @@ class Forth {
         }
     }
 
+    // start a new definition
     startDefinition(definitionName) {
-        this.definition = {
-            name: definitionName,
-            steps: []
-        }
+        this.definition = new Definition(definitionName);
     }
 
-    compileDefinition() {
-        let functionWrapper = (step) => (s) => s.push(step);
-
-        let compiledDefinition = [];
-        for (let j in this.definition.steps) {
-            if (!isNaN(this.definition.steps[j])) {
-                compiledDefinition.push(functionWrapper(parseInt(this.definition.steps[j])));
-            } else {
-                let method = this.dictionary.find(this.definition.steps[j]);
-                if (method) {
-                    compiledDefinition.push(method);
-                } else {
-                    console.log('Operation does not exist');
-                }
-            }
-        }
-        return compiledDefinition;
-    }
-
+    // add completed definition to the dictionary
     endDefinition() {
-        this.dictionary.add(this.definition.name, this.compileDefinition());
+        let compiledDefinition = this.definition.compileDefinition(this.dictionary);
+        this.dictionary.add(this.definition._name, compiledDefinition);
         this.definition = null;
     }
 }
