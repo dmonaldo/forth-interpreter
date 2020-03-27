@@ -2,10 +2,11 @@ const Stack = require('./stack');
 const Dictionary = require('./dictionary');
 
 class Forth {
-    constructor() {
+    constructor(debug) {
         this.stack = new Stack();
         this.dictionary = new Dictionary();
         this.definition;
+        this.debug = debug;
     }
 
     processInput(input) {
@@ -52,8 +53,10 @@ class Forth {
             }
         }
 
-        // console.log(this.stack._stack, " <- TOP");
-        // console.log(JSON.stringify(this.dictionary._dictionary))
+        if (this.debug) {
+            console.log('STACK: ', this.stack._stack, " <- TOP");
+            console.log('DICTIONARY: ', JSON.stringify(this.dictionary._dictionary))
+        }
     }
 
     performOperation(word) {

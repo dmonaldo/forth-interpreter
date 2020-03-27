@@ -6,8 +6,11 @@ const line = readline.createInterface({
     output: process.stdout
 });
 
+// set to true for verbose debugging
+const DEBUG = false;
+
 Main = () => {
-    let forth = new Forth();
+    let forth = new Forth(DEBUG);
 
     // begin command prompt
     line.prompt();
