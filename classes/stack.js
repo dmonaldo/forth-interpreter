@@ -14,6 +14,7 @@ class Stack {
             return this._stack.pop();
         else
             console.log('Stack is empty');
+            throw 'Stack is empty';
     }
 
     // print the stack

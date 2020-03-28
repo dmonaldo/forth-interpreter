@@ -2,23 +2,23 @@ class Dictionary {
     constructor() {
         this._dictionary = [];
 
-        this.add('.', (s) => {
+        this.add('.', (d, s) => {
             return s.pop()
         });
-        this.add('.s', (s) => {
+        this.add('.s', (d, s) => {
             s.print()
         });
-        this.add('+', (s) => {
+        this.add('+', (d, s) => {
             s.push(s.pop() + s.pop())
         });
-        this.add('-', (s) => {
+        this.add('-', (d, s) => {
             let a = s.pop(), b = s.pop();
             s.push(b - a);
         });
-        this.add('*', (s) => {
+        this.add('*', (d, s) => {
             s.push(s.pop() * s.pop())
         });
-        this.add('/', (s) => {
+        this.add('/', (d, s) => {
             let a = s.pop(), b = s.pop();
             s.push(Math.floor(b / a));
         });
@@ -31,6 +31,7 @@ class Dictionary {
 
     // search the dictionary for a word
     find(methodName) {
+        console.log(methodName)
         let method = this._dictionary.find((method) => method[0] === methodName);
 
         if (method)

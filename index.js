@@ -7,7 +7,7 @@ const line = readline.createInterface({
 });
 
 // set to true for verbose debugging
-const DEBUG = false;
+const DEBUG = true;
 
 Main = () => {
     let forth = new Forth(DEBUG);

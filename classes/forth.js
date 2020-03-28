@@ -65,9 +65,9 @@ class Forth {
         if (method) {
             if (Array.isArray(method)) {
                 for (let i in method)
-                    method[i](this.stack);
+                    method[i](this.dictionary, this.stack);
             } else {
-                method(this.stack);
+                method(this.dictionary, this.stack);
             }
         } else {
             console.log('Operation does not exist');
