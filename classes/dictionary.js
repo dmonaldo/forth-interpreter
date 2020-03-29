@@ -38,18 +38,31 @@ class Dictionary {
         }));
     }
 
-    // add a word and definition to the dictionary
+    // add a definition to the dictionary
     add(definition) {
-        // TODO: check if definition already exists, if so overwrite it
-        this._dictionary.push([definition._name, definition]);
+        let existingDefinition = this.find(definition._name);
+
+        if (existingDefinition === null)
+            this._dictionary.push([definition._name, definition]);
+        else
+            this.update(definition);
     }
 
-    // search the dictionary for a word
-    find(methodName) {
-        let method = this._dictionary.find((method) => method[0] === methodName);
+    // update an existing definition in the dictionary
+    update(definition) {
+        let definitionName = definition._name;
+        let existingDefinitionIndex = this._dictionary.findIndex((definition) => definition[0] === definitionName);
 
-        if (method)
-            return method[1];
+        if (existingDefinitionIndex >= 0)
+            this._dictionary[existingDefinitionIndex] = [definition._name, definition];
+    }
+
+    // search the dictionary for a definition
+    find(definitionName) {
+        let definition = this._dictionary.find((definition) => definition[0] === definitionName);
+
+        if (definition !== undefined)
+            return definition[1];
         else
             return null;
     }

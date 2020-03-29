@@ -17,7 +17,9 @@ test('add . definition to dictionary', () => {
         return stack.pop();
     });
     dictionary.add(definition);
-    expect(dictionary._dictionary).toEqual([[definitionName, definition]]);
+    expect(dictionary._dictionary).toEqual(
+        expect.arrayContaining([[definitionName, definition]])
+    );
 });
 
 test('find . definition in dictionary', () => {
@@ -33,4 +35,14 @@ test('find . definition in dictionary', () => {
 test('find notFound definition in dictionary', () => {
     let definitionFound = dictionary.find('notFound');
     expect(definitionFound).toEqual(null);
+});
+
+test('overwrite existing definition', () => {
+    let definitionName = 'dupDef';
+    let definition = new Step(definitionName, (d, stack) => {
+        stack.push(stack.pop() + stack.pop());
+    });
+    dictionary.add(definition);
+    dictionary.add(definition);
+    expect(dictionary._dictionary).toEqual([[definitionName, definition]]);
 });
