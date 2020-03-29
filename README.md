@@ -32,6 +32,10 @@ Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex:
 ### Definitions
 - `:definitionName ...;` - define a new operation, ex: `:increment 1 +;`
 
+### Conditionals
+- `if then` - if statement
+- `if else then` - if/else statement
+
 ## Roadmap
 ### Output
 - `emit` - output num on top of stack as ascii characters
@@ -51,9 +55,9 @@ Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex:
 - `and` - and (bitwise)
 - `or` - or (bitwise)
 - `invert` - ! not (bitwise)
-- `if then` - if statement
-- `if else then` - if/else statement
 - `do loop` - for loop
+
+TODO: support for nested branching
 
 ### Memory
 - `variable` - store a variable in memory

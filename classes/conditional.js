@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 class Conditional {
     constructor(pContext, pStructure) {
         this._parentContext = pContext;
@@ -6,34 +8,33 @@ class Conditional {
         this._hook = []; // else branch
     }
 
-    execute() {
-        return (dictionary, stack) => {
-            // stack.print()
-            // console.log("STASCK: ", stack.pop())
-            if (stack.pop() === -1) {
-                // console.log("TRUE ", this._check[0])
-                console.log("TRUE")
-                // console.log("what ", this._check[0].execute(dictionary)(dictionary, stack))
+    execute(dictionary, stack, nextStep) {
+        if (nextStep === undefined)
+            nextStep = () => {}
 
-                // return this._check[0].execute(dictionary)(dictionary, stack);
-                return this._check[0].execute(dictionary, stack, this._check.splice(1));
-            } else {
-                console.log("FALSE")
-                return this._hook[0].execute(dictionary)(dictionary, stack);
-                // return this._hook[0].execute(dictionary, stack, this._check.splice(1));
-            }
+        if (stack.pop() === -1) {
+            // console.log("clone._check", clone._check)
+            this.executeSteps(this._check, dictionary, stack, nextStep);
+        } else {
+            // console.log("clone._hook", clone._hook)
+            this.executeSteps(this._hook, dictionary, stack, nextStep);
         }
     }
 
-    // executeSteps(steps, ) {
+    executeSteps(steps, dictionary, stack, nextStep) {
+        let recursiveExecuteSteps = (steps) => {
+            if (steps.length > 0) {
+                let step = steps.shift();
+                step.execute(dictionary, stack, () => {
+                    recursiveExecuteSteps(steps);
+                });
+            } else {
+                nextStep();
+            }
+        }
 
-    // }
-
-    // nextStep(remainingSteps) {
-    //     if ()
-    // }
-
-
+        recursiveExecuteSteps(steps);
+    }
 }
 
 module.exports = Conditional;

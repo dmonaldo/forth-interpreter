@@ -41,3 +41,8 @@ test('8 / 2', () => {
     forth.processInput('8 2 /');
     expect(forth.stack.pop()).toEqual(4);
 });
+
+test('if', () => {
+    forth.processInput(':t if 42 else 69 then ; -1 t');
+    expect(forth.stack.pop()).toEqual(42);
+});

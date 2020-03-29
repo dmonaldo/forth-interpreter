@@ -33,6 +33,26 @@ class Step {
             }
         // }
     }
+
+    executeSteps(steps, dictionary, stack, nextStep) {
+        let recursiveExecuteSteps = (steps) => {
+            console.log("recursive STEPS ", steps)
+            if (steps.length > 0) {
+                let step = steps.shift();
+                // console.log("EXECUTING STEP ", step)
+                // console.log("ALL STEPS", steps)
+                step.execute(dictionary, stack, () => {
+                    console.log("CHECKING", steps)
+                    recursiveExecuteSteps(steps);
+                });
+            } else {
+                // steps[0].execute(dictionary, stack, nextStep());
+                nextStep();
+            }
+        }
+
+        recursiveExecuteSteps(steps);
+    }
 }
 
 module.exports = Step;

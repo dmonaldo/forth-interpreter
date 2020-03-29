@@ -42,7 +42,7 @@ class Dictionary {
     // add a word and definition to the dictionary
     add(definition) {
         // TODO: check if definition already exists, if so overwrite it
-        // console.log("ADDING ", definition)
+        console.log("ADDING ", definition)
         this._dictionary.push([definition._name, definition]);
     }
 
