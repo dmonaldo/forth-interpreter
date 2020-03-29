@@ -55,20 +55,39 @@ class Forth {
 
         if (this.debug) {
             console.log('STACK: ', this.stack._stack, " <- TOP");
-            console.log('DICTIONARY: ', JSON.stringify(this.dictionary._dictionary))
+            this.dictionary._dictionary.forEach(item => {
+                console.log(item[0])
+            })
+            // console.log('DICTIONARY: ', JSON.stringify(this.dictionary._dictionary))
         }
     }
+
+    // performOperation(word) {
+    //     let method = this.dictionary.find(word);
+
+    //     if (method) {
+    //         if (Array.isArray(method)) {
+    //             for (let i in method)
+    //                 method[i](this.dictionary, this.stack);
+    //         } else {
+    //             method(this.dictionary, this.stack);
+    //         }
+    //     } else {
+    //         console.log('Operation does not exist');
+    //     }
+    // }
 
     performOperation(word) {
         let method = this.dictionary.find(word);
 
         if (method) {
-            if (Array.isArray(method)) {
-                for (let i in method)
-                    method[i](this.dictionary, this.stack);
-            } else {
-                method(this.dictionary, this.stack);
-            }
+            // if (typeof method == 'function') {
+            //     // console.log("YEE")
+            //     method(this.dictionary, this.stack);
+            // } else {
+                // console.log("HAW", method)
+                method.execute(this.dictionary, this.stack);
+            // }
         } else {
             console.log('Operation does not exist');
         }
@@ -79,10 +98,28 @@ class Forth {
         this.definition = new Definition(definitionName);
     }
 
+    // run(word) {
+    //     let method = this.dictionary.find(word);
+    //     console.log("METHOD FOUND: ", method)
+    //     if (method) {
+    //         // if (Array.isArray(method)) {
+    //         //     for (let i in method)
+    //         //         method[i](this.dictionary, this.stack);
+    //         // } else {
+    //             method.execute(this.dictionary, this.stack);
+    //         // }
+    //     } else {
+    //         console.log('Operation does not exist');
+    //     }
+    // }
+
     // add completed definition to the dictionary
     endDefinition() {
-        let compiledDefinition = this.definition.compileDefinition(this.dictionary);
-        this.dictionary.add(this.definition._name, compiledDefinition);
+        // let compiledDefinition = this.definition.compileDefinition(this.dictionary, this.stack);
+        // let compiledDefinition = this.definition.compileDefinition();
+        // console.log("compiledDefinition", compiledDefinition.execute)
+        this.dictionary.add(this.definition);
+        // this.run('t')
         this.definition = null;
     }
 }

@@ -4,7 +4,7 @@ let forth = new Forth();
 test('add increment definition to dictionary', () => {
     forth.processInput(':increment 1 +;');
     let found = forth.dictionary.find('increment');
-    expect(found.length).toEqual(2);
+    expect(found).toBeTruthy();
 });
 
 test('run increment to find the meaning of life', () => {

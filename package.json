@@ -9,7 +9,9 @@
   },
   "author": "Dante Monaldo",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
   "devDependencies": {
     "jest": "^25.2.0"
   }

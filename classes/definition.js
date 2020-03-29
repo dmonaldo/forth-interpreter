@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const Step = require('./step');
 const Conditional = require('./conditional');
 
@@ -34,14 +35,30 @@ class Definition {
         }
     }
 
-    compileDefinition(dictionary) {
-        let compiledDefinition = [];
-        console.log("STEPS: ", this._steps)
-        for (let i in this._steps) {
-            compiledDefinition.push(this._steps[i].execute(dictionary));
+    execute(dictionary, stack, nextStep) {
+        if (nextStep === undefined)
+            nextStep = () => {}
+        let clone = _.cloneDeep(this); // deep-copy obj to prevent overwriting definition
+        this.executeSteps(clone._steps, dictionary, stack, nextStep);
+    }
+
+    executeSteps(steps, dictionary, stack, nextStep) {
+        let recursiveExecuteSteps = (steps) => {
+            // console.log("STEPS ", this._steps[0].execute)
+            if (steps.length > 0) {
+                let step = steps.shift();
+                // console.log("EXECUTING STEP ", step)
+                // console.log("ALL STEPS", steps)
+                step.execute(dictionary, stack, () => {
+                    // console.log("CHECKING", steps)
+                    recursiveExecuteSteps(steps);
+                });
+            } else {
+                nextStep();
+            }
         }
-        console.log(compiledDefinition)
-        return compiledDefinition;
+
+        recursiveExecuteSteps(steps);
     }
 }
 
