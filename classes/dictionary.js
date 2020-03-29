@@ -4,8 +4,7 @@ class Dictionary {
     constructor() {
         this._dictionary = [];
 
-        // Populate dictionary
-
+        /* POPULATE DICTIONARY */
         // .
         this.add(new Step('.', (d, s) => {
             return s.pop();
@@ -42,14 +41,13 @@ class Dictionary {
     // add a word and definition to the dictionary
     add(definition) {
         // TODO: check if definition already exists, if so overwrite it
-        console.log("ADDING ", definition)
         this._dictionary.push([definition._name, definition]);
     }
 
     // search the dictionary for a word
     find(methodName) {
         let method = this._dictionary.find((method) => method[0] === methodName);
-// console.log("METHOD", methodName, method)
+
         if (method)
             return method[1];
         else

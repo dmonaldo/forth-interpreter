@@ -20,7 +20,7 @@ Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex:
 
 ## Support
 ### Output
-- `.` - pop from the stack
+- `.` - pop from the top of the stack
 - `.s` - print the stack
 
 ### Operations
@@ -41,7 +41,7 @@ Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex:
 - `emit` - output num on top of stack as ascii characters
 
 ### Operations
-- `mod` - 
+- `mod` - modulus
 
 ### Stack Manipulation
 - `dup` - duplicate top num on stack
@@ -57,7 +57,7 @@ Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex:
 - `invert` - ! not (bitwise)
 - `do loop` - for loop
 
-TODO: support for nested branching
+TODO: reuse executeSteps for Definition, Steps and Conditional (by extending Definition?)
 
 ### Memory
 - `variable` - store a variable in memory

@@ -17,7 +17,6 @@ test('add . definition to dictionary', () => {
         return stack.pop();
     });
     dictionary.add(definition);
-    // dictionary.add(methodName, method);
     expect(dictionary._dictionary).toEqual([[definitionName, definition]]);
 });
 

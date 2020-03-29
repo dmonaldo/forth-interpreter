@@ -11,25 +11,20 @@ class Definition {
     }
 
     addStep(step) {
-        // console.log("STEP: ", step)
         switch(step) {
             case 'if':
-                // console.log("CASE IF")
                 this._currentStructure = new Conditional(this._currentContext, this._currentStructure);
                 this._currentContext.push(this._currentStructure);
                 this._currentContext = this._currentStructure._check;
                 break;
             case 'else':
-                // console.log("CASE ELSE")
                 this._currentContext = this._currentStructure._hook;
                 break;
             case 'then':
-                // console.log("CASE THEN")
                 this._currentContext = this._currentStructure._parentContext;
                 this._currentStructure = this._currentStructure._parentStructure;
                 break;
             default:
-                // console.log("DEFAULT: ", step)
                 this._currentContext.push(new Step(step));
                 break;
         }
@@ -44,15 +39,9 @@ class Definition {
 
     executeSteps(steps, dictionary, stack, nextStep) {
         let recursiveExecuteSteps = (steps) => {
-            // console.log("STEPS ", this._steps[0].execute)
             if (steps.length > 0) {
                 let step = steps.shift();
-                // console.log("EXECUTING STEP ", step)
-                // console.log("ALL STEPS", steps)
-                step.execute(dictionary, stack, () => {
-                    // console.log("CHECKING", steps)
-                    recursiveExecuteSteps(steps);
-                });
+                step.execute(dictionary, stack, () => recursiveExecuteSteps(steps));
             } else {
                 nextStep();
             }
