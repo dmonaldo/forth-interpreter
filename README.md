@@ -14,7 +14,7 @@ Start the interpreter with debugging turned on: `npm run debug`
 
 Test the interpreter: `npm test`
 
-## Support
+## Supported Words
 ### Output
 - `.` - pop from the top of the stack
 - `.s` - print the stack
