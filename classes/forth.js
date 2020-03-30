@@ -46,7 +46,12 @@ class Forth {
                 }
                 // perform operation
                 else {
-                    this.performOperation(input[i]);
+                    try {
+                        this.performOperation(input[i]);
+                    } catch(e) {
+                        console.log(e)
+                        return;
+                    }
                 }
             }
         }
@@ -65,7 +70,7 @@ class Forth {
         if (definition)
             definition.execute(this.dictionary, this.stack);
         else
-            console.log('Operation does not exist');
+            throw 'Operation does not exist';
     }
 
     // start a new definition
