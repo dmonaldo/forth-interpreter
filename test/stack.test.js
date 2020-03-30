@@ -1,6 +1,11 @@
 const Stack = require('../classes/stack');
 let stack = new Stack();
 
+beforeEach(() => {
+    // clear console output
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+});
+
 afterEach(() => {
     // reset stack
     stack._stack = [];
@@ -21,7 +26,5 @@ test('pop 38 off stack', () => {
 });
 
 test('popping from an empty stack', () => {
-    expect(() => {
-        stack.pop()
-    }).toThrow();
+    expect(stack.pop()).toBeNull();
 });

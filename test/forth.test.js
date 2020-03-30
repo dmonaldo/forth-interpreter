@@ -1,6 +1,11 @@
 const Forth = require('../classes/forth');
 let forth = new Forth();
 
+beforeEach(() => {
+    // clear console output
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+});
+
 /* OUTPUT */
 test('.', () => {
     forth.processInput('1 2 .');

@@ -2,6 +2,11 @@ const Dictionary = require('../classes/dictionary');
 const Step = require('../classes/step');
 let dictionary = new Dictionary();
 
+beforeEach(() => {
+    // clear console output
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+});
+
 afterEach(() => {
     // reset dictionary
     dictionary._dictionary = [];
