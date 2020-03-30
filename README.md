@@ -16,7 +16,6 @@ Test the interpreter: `npm test`
 
 ## Supported Words
 ### Output
-- `.` - pop from the top of the stack
 - `.s` - print the stack
 
 ### Mathematical Operations
@@ -26,6 +25,7 @@ Test the interpreter: `npm test`
 - `/` - divide second to last stack num by last stack num on stack
 
 ### Stack Manipulation
+- `.` - pop from the top of the stack
 - `dup` - duplicate top num on stack, ex: `3 dup` => [3, 3] <- TOP
 
 ### Definitions
