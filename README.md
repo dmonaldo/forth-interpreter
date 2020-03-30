@@ -4,19 +4,15 @@ A [Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) interprete
 
 ## Installation
 
-Clone this repo and run `npm install`
+Clone this repo and run `npm install`.
 
 ## Usage
 
-```
-npm start
-```
+Start the interpreter: `npm start`
 
-```
-npm test
-```
+Start the interpreter with debugging turned on: `npm run debug`
 
-Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex: `let forth = new Forth(true);`
+Test the interpreter: `npm test`
 
 ## Support
 ### Output
@@ -30,11 +26,11 @@ Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex:
 - `/` - divide second to last stack num by last stack num on stack
 
 ### Definitions
-- `:definitionName ...;` - define a new operation, ex: `:increment 1 +;`
+- `:definitionName ...;` - define a new operation, ex: `: increment 1 +;`
 
 ### Conditionals
-- `if then` - if statement
-- `if else then` - if/else statement
+- `if then` - if statement, ex: `if 1 then`
+- `if else then` - if/else statement, ex: `if 1 else 2 then`
 
 ## Roadmap
 ### Output
@@ -54,17 +50,14 @@ Debug mode: pass `TRUE` into Forth constructor to turn on verbose debugging. ex:
 - `>` - greater than
 - `and` - and (bitwise)
 - `or` - or (bitwise)
-- `invert` - ! not (bitwise)
+- `invert` - ! (bitwise)
 - `do loop` - for loop
-
-TODO: reuse executeSteps for Definition, Steps and Conditional (by extending Definition?)
 
 ### Memory
 - `variable` - store a variable in memory
 - `constant` - store an immutable variable in memory
 
 ## Contributing
-
 Pull requests are welcome. Please make sure tests pass before submitting a PR.
 
 ## License
