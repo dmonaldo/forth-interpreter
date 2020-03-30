@@ -6,12 +6,6 @@ beforeEach(() => {
     jest.spyOn(console, 'log').mockImplementation(() => {});
 });
 
-/* OUTPUT */
-test('.', () => {
-    forth.processInput('1 2 .');
-    expect(forth.stack.pop()).toEqual(1);
-});
-
 /* MATHEMATICAL OPERATIONS */
 test('1 + 2', () => {
     forth.processInput('1 2 +');
@@ -34,6 +28,11 @@ test('8 / 2', () => {
 });
 
 /* STACK MANIPULATION */
+test('.', () => {
+    forth.processInput('1 2 .');
+    expect(forth.stack.pop()).toEqual(1);
+});
+
 test('4 dup', () => {
     forth.processInput('4 dup');
     expect([forth.stack.pop(), forth.stack.pop()]).toEqual([4,4])
