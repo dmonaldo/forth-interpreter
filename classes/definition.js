@@ -10,6 +10,7 @@ class Definition {
         this._currentStructure = this;
     }
 
+    // handle branching of steps and track context to nest steps
     addStep(step) {
         switch(step) {
             case 'if':
@@ -30,24 +31,12 @@ class Definition {
         }
     }
 
+    // execute the definition
     execute(dictionary, stack, nextStep) {
         if (nextStep === undefined)
             nextStep = () => {}
         let clone = _.cloneDeep(this); // deep-copy obj to prevent overwriting definition
-        this.executeSteps(clone._steps, dictionary, stack, nextStep);
-    }
-
-    executeSteps(steps, dictionary, stack, nextStep) {
-        let recursiveExecuteSteps = (steps) => {
-            if (steps.length > 0) {
-                let step = steps.shift();
-                step.execute(dictionary, stack, () => recursiveExecuteSteps(steps));
-            } else {
-                nextStep();
-            }
-        }
-
-        recursiveExecuteSteps(steps);
+        new Step().executeSteps(clone._steps, dictionary, stack, nextStep);
     }
 }
 

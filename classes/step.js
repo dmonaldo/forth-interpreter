@@ -1,46 +1,45 @@
 class Step {
-    constructor(step, method) {
+    constructor(step, definition) {
         this._name = step;
 
-        if (method)
-            this.execute = method;
+        if (definition)
+            this.execute = definition;
     }
 
-    // push number to stack
-    functionWrapper(step) {
-        return (dictionary, s, nextStep) =>  {
-            s.push(step);
+    // function wrapper to push a number to top of stack
+    wrapper(step) {
+        return (dictionary, stack, nextStep) =>  {
+            stack.push(step);
             nextStep();
         }
     }
 
     // execute the step
     execute(dictionary, stack, nextStep) {
-        // TODO: Use this execute method in forth Class
         if (!isNaN(this._name)) {
-            this.functionWrapper(parseInt(this._name))(dictionary, stack, nextStep);
+            this.wrapper(parseInt(this._name))(dictionary, stack, nextStep);
         } else {
-            let method = dictionary.find(this._name);
+            let definition = dictionary.find(this._name);
 
-            if (method) {
-                method.execute(dictionary, stack, nextStep);
-            } else {
+            if (definition)
+                definition.execute(dictionary, stack, nextStep);
+            else
                 console.log('Operation does not exist');
-            }
         }
     }
 
+    // recursively execute an array of steps
     executeSteps(steps, dictionary, stack, nextStep) {
-        let recursiveExecuteSteps = (steps) => {
+        let recursivelyExecuteSteps = (steps) => {
             if (steps.length > 0) {
                 let step = steps.shift();
-                step.execute(dictionary, stack, () => recursiveExecuteSteps(steps));
+                step.execute(dictionary, stack, () => recursivelyExecuteSteps(steps));
             } else {
                 nextStep();
             }
         }
 
-        recursiveExecuteSteps(steps);
+        recursivelyExecuteSteps(steps);
     }
 }
 

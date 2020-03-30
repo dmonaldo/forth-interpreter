@@ -57,6 +57,9 @@ Test the interpreter: `npm test`
 - `variable` - store a variable in memory
 - `constant` - store an immutable variable in memory
 
+### Other
+- Improve error handling to prevent crashes when user enters an invalid sequence of words
+
 ## Contributing
 Pull requests are welcome. Please make sure tests pass before submitting a PR.
 

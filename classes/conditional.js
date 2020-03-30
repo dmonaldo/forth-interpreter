@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const Step = require('./step');
 
 class Conditional {
     constructor(pContext, pStructure) {
@@ -8,32 +9,15 @@ class Conditional {
         this._hook = []; // else branch
     }
 
+    // execute the conditional
     execute(dictionary, stack, nextStep) {
         if (nextStep === undefined)
             nextStep = () => {}
 
-        if (stack.pop() === -1) {
-            // console.log("clone._check", clone._check)
-            this.executeSteps(this._check, dictionary, stack, nextStep);
-        } else {
-            // console.log("clone._hook", clone._hook)
-            this.executeSteps(this._hook, dictionary, stack, nextStep);
-        }
-    }
-
-    executeSteps(steps, dictionary, stack, nextStep) {
-        let recursiveExecuteSteps = (steps) => {
-            if (steps.length > 0) {
-                let step = steps.shift();
-                step.execute(dictionary, stack, () => {
-                    recursiveExecuteSteps(steps);
-                });
-            } else {
-                nextStep();
-            }
-        }
-
-        recursiveExecuteSteps(steps);
+        if (stack.pop() === -1)
+            new Step().executeSteps(this._check, dictionary, stack, nextStep);
+        else
+            new Step().executeSteps(this._hook, dictionary, stack, nextStep);
     }
 }
 

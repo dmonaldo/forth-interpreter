@@ -10,6 +10,7 @@ class Forth {
         this.debug = debug;
     }
 
+    // parse a string of space delimited words
     processInput(input) {
         if (input.length == 0)
             return;
@@ -57,14 +58,14 @@ class Forth {
         }
     }
 
+    // execute the definition
     performOperation(word) {
-        let method = this.dictionary.find(word);
+        let definition = this.dictionary.find(word);
 
-        if (method) {
-            method.execute(this.dictionary, this.stack);
-        } else {
+        if (definition)
+            definition.execute(this.dictionary, this.stack);
+        else
             console.log('Operation does not exist');
-        }
     }
 
     // start a new definition
