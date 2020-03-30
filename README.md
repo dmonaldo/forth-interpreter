@@ -1,6 +1,6 @@
 # forth-interpreter
 
-A [Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) interpreter implemented in Javascript.
+A [Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) language interpreter implemented in Javascript.
 
 ## Installation
 
@@ -19,17 +19,17 @@ Test the interpreter: `npm test`
 - `.s` - print the stack
 
 ### Mathematical Operations
-- `+` - add two numbers
-- `-` - subtract last num on stack from second to last num on stack
-- `*` - multiply two numbers
-- `/` - divide second to last stack num by last stack num on stack
+- `+` - add two numbers, ex: `1 2 +` => [3]
+- `-` - subtract last num on stack from the second to last num on stack, ex: `5 1 -` => [4]
+- `*` - multiply two numbers, ex: `7 * 3` => [21]
+- `/` - divide second to last num on stack by the last num on stack, ex: `10 5 /` => [2]
 
 ### Stack Manipulation
 - `.` - pop from the top of the stack
-- `dup` - duplicate top num on stack, ex: `3 dup` => [3, 3] <- TOP
+- `dup` - duplicate top num on stack, ex: `3 dup` => [3, 3]
 
 ### Definitions
-- `:definitionName ...;` - define a new operation, ex: `: increment 1 +;`
+- `: definitionName ...;` - define a new operation, ex: `: increment 1 +;`
 
 ### Conditionals
 - `if then` - if statement, ex: `if 1 then`
