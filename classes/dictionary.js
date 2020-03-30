@@ -36,6 +36,13 @@ class Dictionary {
             let a = s.pop(), b = s.pop();
             s.push(Math.floor(b / a));
         }));
+
+        // dup
+        this.add(new Step('dup', (d, s) => {
+            let a = s.pop();
+            s.push(a);
+            s.push(a);
+        }));
     }
 
     // add a definition to the dictionary

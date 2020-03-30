@@ -33,6 +33,12 @@ test('8 / 2', () => {
     expect(forth.stack.pop()).toEqual(4);
 });
 
+/* STACK MANIPULATION */
+test('4 dup', () => {
+    forth.processInput('4 dup');
+    expect([forth.stack.pop(), forth.stack.pop()]).toEqual([4,4])
+});
+
 /* DEFINITIONS */
 test('add increment definition to dictionary', () => {
     forth.processInput(': increment 1 +;');

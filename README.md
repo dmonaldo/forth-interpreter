@@ -19,11 +19,14 @@ Test the interpreter: `npm test`
 - `.` - pop from the top of the stack
 - `.s` - print the stack
 
-### Operations
+### Mathematical Operations
 - `+` - add two numbers
 - `-` - subtract last num on stack from second to last num on stack
 - `*` - multiply two numbers
 - `/` - divide second to last stack num by last stack num on stack
+
+### Stack Manipulation
+- `dup` - duplicate top num on stack, ex: `3 dup` => [3, 3] <- TOP
 
 ### Definitions
 - `:definitionName ...;` - define a new operation, ex: `: increment 1 +;`
@@ -36,11 +39,10 @@ Test the interpreter: `npm test`
 ### Output
 - `emit` - output num on top of stack as ascii characters
 
-### Operations
+### Mathematical Operations
 - `mod` - modulus
 
 ### Stack Manipulation
-- `dup` - duplicate top num on stack
 - `drop` - drop top num from stack
 - `swap` - swap the top two nums on the stack
 
