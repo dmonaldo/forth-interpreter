@@ -8,6 +8,10 @@ class Forth {
         this.dictionary = new Dictionary();
         this.definition;
         this.debug = debug;
+        this.immediate = true; // immediate mode
+
+        // don't need hidden flag, javascript is single-threaded
+        
     }
 
     // parse a string of space delimited words

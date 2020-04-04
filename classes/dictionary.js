@@ -43,6 +43,23 @@ class Dictionary {
             s.push(a);
             s.push(a);
         }));
+
+        // immediate
+        this.add(new Step('immediate', (d, s) => {
+            // add offset to instruction pointer
+
+        }));
+
+        // unconditional branch
+        this.add(new Step('branch', (d, s) => {
+            // add offset to instruction pointer
+
+        }));
+
+        // conditional branch
+        this.add(new Step('0branch', (d, s) => {
+            // 
+        }));
     }
 
     // add a definition to the dictionary
