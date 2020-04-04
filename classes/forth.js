@@ -68,7 +68,7 @@ class Forth {
         let definition = this.dictionary.find(word);
 
         if (definition)
-            definition.execute(this.dictionary, this.stack);
+            definition.execute(this.dictionary, this.stack, () => {});
         else
             throw 'Operation does not exist';
     }

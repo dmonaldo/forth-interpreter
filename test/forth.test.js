@@ -62,6 +62,12 @@ test(`nested definitions`, () => {
     expect(forth.stack.pop()).toEqual(6);
 });
 
+test(`definitions with multiple non-literal steps`, () => {
+    forth.processInput(': square dup * ;');
+    forth.processInput('3 square');
+    expect(forth.stack.pop()).toEqual(9);
+});
+
 /* CONDITIONALS */
 test('if definition', () => {
     forth.processInput(': ifDef if 42 else 69 then ; -1 ifDef');

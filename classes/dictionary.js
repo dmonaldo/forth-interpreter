@@ -6,42 +6,49 @@ class Dictionary {
 
         /* POPULATE DICTIONARY */
         // .
-        this.add(new Step('.', (d, s) => {
-            return s.pop();
+        this.add(new Step('.', (d, s, next) => {
+            s.pop();
+            next();
         }));
 
         // .s
-        this.add(new Step('.s', (d, s) => {
+        this.add(new Step('.s', (d, s, next) => {
             s.print();
+            next();
         }));
 
         // +
-        this.add(new Step('+', (d, s) => {
+        this.add(new Step('+', (d, s, next) => {
             s.push(s.pop() + s.pop());
+            next();
         }));
 
         // -
-        this.add(new Step('-', (d, s) => {
+        this.add(new Step('-', (d, s, next) => {
             let a = s.pop(), b = s.pop();
             s.push(b - a);
+            next();
         }));
 
         // *
-        this.add(new Step('*', (d, s) => {
+        this.add(new Step('*', (d, s, next) => {
             s.push(s.pop() * s.pop());
+            next();
         }));
 
         // /
-        this.add(new Step('/', (d, s) => {
+        this.add(new Step('/', (d, s, next) => {
             let a = s.pop(), b = s.pop();
             s.push(Math.floor(b / a));
+            next();
         }));
 
         // dup
-        this.add(new Step('dup', (d, s) => {
+        this.add(new Step('dup', (d, s, next) => {
             let a = s.pop();
             s.push(a);
             s.push(a);
+            next();
         }));
     }
 
