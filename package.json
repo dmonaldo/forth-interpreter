@@ -11,7 +11,7 @@
   "author": "Dante Monaldo",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "jest": "^25.2.0"
